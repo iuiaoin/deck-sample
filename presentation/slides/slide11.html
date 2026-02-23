@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>横向对比矩阵</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body {
+      margin: 0; padding: 0; width: 100vw; height: 100vh;
+      display: flex; justify-content: center; align-items: center;
+      background-color: #e0e0e0;
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif;
+    }
+    .slide {
+      width: 1280px; height: 720px;
+      background-color: #F7F4EF;
+      position: relative; overflow: hidden;
+      box-sizing: border-box;
+      display: flex; flex-direction: column;
+      padding: 45px 50px 50px;
+    }
+    @keyframes fadeInContent { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    h1 {
+      color: #2B2A27; font-size: 36px; font-weight: 700; margin: 0 0 6px; text-align: center;
+      animation: fadeInContent 0.6s ease-out;
+    }
+    .subtitle {
+      text-align: center; font-size: 15px; color: #E07A59; font-weight: 600; margin: 0 0 20px;
+      animation: fadeInContent 0.6s ease-out 0.1s forwards; opacity: 0;
+    }
+    .table-wrapper {
+      flex: 1; overflow: hidden;
+      opacity: 0; animation: fadeInContent 0.8s ease-out 0.2s forwards;
+    }
+    table {
+      width: 100%; border-collapse: collapse; font-size: 12.5px; table-layout: fixed;
+    }
+    th {
+      background-color: #2B2A27; color: #F7F4EF; padding: 10px 8px;
+      text-align: center; font-weight: 600; font-size: 12px;
+      letter-spacing: 0.3px;
+    }
+    th:first-child { text-align: left; width: 110px; padding-left: 14px; }
+    td {
+      padding: 9px 8px; border-bottom: 1px solid #EAE0D9; color: #5D4E42;
+      text-align: center; vertical-align: middle; line-height: 1.45;
+    }
+    td:first-child {
+      font-weight: 600; color: #2B2A27; text-align: left; padding-left: 14px;
+      font-size: 12px;
+    }
+    tr:nth-child(even) td { background-color: rgba(247,244,239,0.5); }
+    tr:hover td { background-color: rgba(224,122,89,0.04); }
+    .strong { color: #3D7A5A; font-weight: 600; }
+    .medium { color: #5D4E42; }
+    .weak { color: #9E9086; }
+    .highlight { color: #E07A59; font-weight: 600; }
+    .tag {
+      display: inline-block; font-size: 10px; font-weight: 600; padding: 1px 6px;
+      border-radius: 3px; white-space: nowrap;
+    }
+    .tag-green { background: rgba(159,211,184,0.2); color: #3D7A5A; }
+    .tag-orange { background: rgba(224,122,89,0.12); color: #C4563A; }
+    .tag-gray { background: rgba(158,144,134,0.12); color: #9E9086; }
+    .footer {
+      position: absolute; bottom: 30px; left: 50px; right: 50px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 14px; color: #9E9086;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <h1>横向对比矩阵</h1>
+    <p class="subtitle">九款工具在核心维度上各有侧重，没有"全能冠军"</p>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>维度</th>
+            <th>Claude Code</th>
+            <th>Codex CLI</th>
+            <th>Cursor</th>
+            <th>Windsurf</th>
+            <th>Copilot</th>
+            <th>Augment</th>
+            <th>Cline</th>
+            <th>Devin</th>
+            <th>V0</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>工具形态</td>
+            <td>CLI Agent</td>
+            <td>CLI Agent</td>
+            <td>AI IDE</td>
+            <td>AI IDE</td>
+            <td>IDE 插件</td>
+            <td>IDE 插件</td>
+            <td>IDE 插件</td>
+            <td>云平台</td>
+            <td>Web 平台</td>
+          </tr>
+          <tr>
+            <td>主要模型</td>
+            <td class="strong">Claude</td>
+            <td>GPT/o-series</td>
+            <td>多模型</td>
+            <td>多模型</td>
+            <td>GPT/Claude</td>
+            <td>多模型</td>
+            <td><span class="tag tag-green">BYOK</span></td>
+            <td>自研+多模型</td>
+            <td>自研模型</td>
+          </tr>
+          <tr>
+            <td>自主执行</td>
+            <td class="strong">&#9733;&#9733;&#9733;&#9733;</td>
+            <td class="strong">&#9733;&#9733;&#9733;&#9733;</td>
+            <td>&#9733;&#9733;&#9733;</td>
+            <td>&#9733;&#9733;</td>
+            <td>&#9733;&#9733;</td>
+            <td>&#9733;&#9733;</td>
+            <td>&#9733;&#9733;&#9733;</td>
+            <td class="highlight">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
+            <td>&#9733;&#9733;&#9733;</td>
+          </tr>
+          <tr>
+            <td>上下文管理</td>
+            <td>Grep 式</td>
+            <td>Grep 式</td>
+            <td>智能索引</td>
+            <td class="strong">长上下文</td>
+            <td>语义索引</td>
+            <td class="strong">全仓库 RAG</td>
+            <td>完整上下文</td>
+            <td>Knowledge Base</td>
+            <td>项目级</td>
+          </tr>
+          <tr>
+            <td>成本模型</td>
+            <td><span class="tag tag-green">$20/月</span></td>
+            <td>Token 计费</td>
+            <td>$20/月+</td>
+            <td>$15/月</td>
+            <td>$10/月+</td>
+            <td>按量</td>
+            <td><span class="tag tag-green">BYOK</span></td>
+            <td><span class="tag tag-orange">$20+ ACU</span></td>
+            <td>$20/月</td>
+          </tr>
+          <tr>
+            <td>开源</td>
+            <td class="weak">否</td>
+            <td class="weak">否</td>
+            <td class="weak">否</td>
+            <td class="weak">否</td>
+            <td class="weak">否</td>
+            <td class="weak">否</td>
+            <td class="strong">&#10003; 是</td>
+            <td class="weak">否</td>
+            <td class="weak">否</td>
+          </tr>
+          <tr>
+            <td>IDE 依赖</td>
+            <td><span class="tag tag-green">无需</span></td>
+            <td><span class="tag tag-green">无需</span></td>
+            <td>自有 IDE</td>
+            <td>自有 IDE</td>
+            <td>VS Code</td>
+            <td>VS Code+</td>
+            <td>VS Code</td>
+            <td><span class="tag tag-green">无需</span></td>
+            <td><span class="tag tag-green">无需</span></td>
+          </tr>
+          <tr>
+            <td>最佳场景</td>
+            <td><span style="font-size:11px">终端工作流<br>复杂重构</span></td>
+            <td><span style="font-size:11px">ChatGPT 生态<br>移动派活</span></td>
+            <td><span style="font-size:11px">日常编码<br>Agent+编辑</span></td>
+            <td><span style="font-size:11px">复杂项目<br>上下文管理</span></td>
+            <td><span style="font-size:11px">企业环境<br>VS Code 用户</span></td>
+            <td><span style="font-size:11px">大型 Monorepo<br>跨模块理解</span></td>
+            <td><span style="font-size:11px">数据安全<br>自定义 Agent</span></td>
+            <td><span style="font-size:11px">全自动派活<br>项目管理集成</span></td>
+            <td><span style="font-size:11px">前端原型<br>React 生态</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="footer">
+      <span>横向对比</span>
+      <span>11 / 15</span>
+    </div>
+  </div>
+</body>
+</html>

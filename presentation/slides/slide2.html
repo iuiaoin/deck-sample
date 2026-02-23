@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body {
+      margin: 0; padding: 0; width: 100vw; height: 100vh;
+      display: flex; justify-content: center; align-items: center;
+      background-color: #e0e0e0;
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif;
+    }
+    .slide {
+      width: 1280px; height: 720px;
+      background-color: #F7F4EF;
+      position: relative; overflow: hidden;
+      box-sizing: border-box;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 120px;
+    }
+    @keyframes slideInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    h1 {
+      color: #2B2A27; font-size: 52px; font-weight: 700; margin: 0 0 50px;
+      animation: slideInUp 0.6s ease-out;
+    }
+    .agenda-list { list-style: none; padding: 0; margin: 0; }
+    .agenda-item {
+      display: flex; align-items: center; margin-bottom: 20px;
+      opacity: 0; animation: slideInUp 0.5s ease-out forwards;
+    }
+    .agenda-item:nth-child(1) { animation-delay: 0.15s; }
+    .agenda-item:nth-child(2) { animation-delay: 0.25s; }
+    .agenda-item:nth-child(3) { animation-delay: 0.35s; }
+    .agenda-item:nth-child(4) { animation-delay: 0.45s; }
+    .agenda-item:nth-child(5) { animation-delay: 0.55s; }
+    .num {
+      width: 36px; height: 36px; border-radius: 50%;
+      background-color: #E07A59; color: #fff; font-size: 16px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-right: 20px;
+    }
+    .agenda-text {
+      font-size: 26px; color: #5D4E42; font-weight: 500; line-height: 1.5;
+    }
+    .agenda-text span { color: #9E9086; font-size: 18px; font-weight: 400; margin-left: 12px; }
+    .footer {
+      position: absolute; bottom: 30px; left: 80px; right: 80px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 14px; color: #9E9086;
+    }
+    .accent-shape { position: absolute; border-radius: 50%; opacity: 0; animation: fadeInShape 2s ease-out forwards; }
+    @keyframes fadeInShape { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+    .shape1 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(159,211,184,0.08) 0%, transparent 70%); bottom: -100px; right: -80px; }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <div class="accent-shape shape1"></div>
+    <h1>Agenda</h1>
+    <div class="agenda-list">
+      <div class="agenda-item">
+        <div class="num">1</div>
+        <div class="agenda-text">行业全景与赛道分类 <span>Landscape</span></div>
+      </div>
+      <div class="agenda-item">
+        <div class="num">2</div>
+        <div class="agenda-text">逐类工具深度分析 <span>AI-Assisted → CLI Agent → End-to-End → Vertical</span></div>
+      </div>
+      <div class="agenda-item">
+        <div class="num">3</div>
+        <div class="agenda-text">九工具横向对比矩阵 <span>Comparison</span></div>
+      </div>
+      <div class="agenda-item">
+        <div class="num">4</div>
+        <div class="agenda-text">场景适配与选型指南 <span>Use Cases</span></div>
+      </div>
+      <div class="agenda-item">
+        <div class="num">5</div>
+        <div class="agenda-text">实战经验与未来思考 <span>Insights & Outlook</span></div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>Agenda</span>
+      <span>2 / 15</span>
+    </div>
+  </div>
+</body>
+</html>

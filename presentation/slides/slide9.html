@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devin — 全自动"初级工程师"</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body {
+      margin: 0; padding: 0; width: 100vw; height: 100vh;
+      display: flex; justify-content: center; align-items: center;
+      background-color: #e0e0e0;
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif;
+    }
+    .slide {
+      width: 1280px; height: 720px;
+      background-color: #F7F4EF;
+      position: relative; overflow: hidden;
+      box-sizing: border-box;
+      display: flex; flex-direction: column;
+      padding: 55px 70px 50px;
+    }
+    @keyframes fadeInContent { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .header-row {
+      display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;
+      animation: fadeInContent 0.6s ease-out;
+    }
+    h1 { color: #2B2A27; font-size: 36px; font-weight: 700; margin: 0; }
+    .section-tag {
+      background: #E07A59; color: #fff; font-size: 12px; font-weight: 600;
+      padding: 4px 14px; border-radius: 12px; letter-spacing: 0.5px; flex-shrink: 0; margin-top: 6px;
+    }
+    .key-point {
+      font-size: 16px; color: #E07A59; font-weight: 600; margin: 0 0 22px;
+      animation: fadeInContent 0.6s ease-out 0.1s forwards; opacity: 0;
+    }
+    .top-section {
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; margin-bottom: 16px;
+    }
+    /* Workflow diagram */
+    .workflow {
+      background: #FFFFFF; border-radius: 10px; padding: 22px 20px;
+      border: 1px solid #EAE0D9;
+      opacity: 0; animation: fadeInContent 0.6s ease-out 0.2s forwards;
+    }
+    .wf-title {
+      font-size: 14px; font-weight: 700; color: #2B2A27; margin-bottom: 14px;
+    }
+    .wf-steps {
+      display: flex; align-items: center; gap: 6px;
+    }
+    .wf-step {
+      flex: 1; padding: 10px 8px; border-radius: 8px; text-align: center;
+      font-size: 12px; font-weight: 600; line-height: 1.4;
+    }
+    .wf-step.user { background: rgba(93,78,66,0.08); color: #5D4E42; }
+    .wf-step.agent { background: rgba(224,122,89,0.1); color: #C4563A; }
+    .wf-step.review { background: rgba(159,211,184,0.15); color: #3D7A5A; }
+    .wf-arrow { color: #D4A373; font-size: 16px; flex-shrink: 0; }
+    .wf-note {
+      margin-top: 12px; font-size: 12px; color: #9E9086; font-style: italic;
+    }
+    /* Cost card */
+    .cost-card {
+      background: #FFFFFF; border-radius: 10px; padding: 22px 20px;
+      border: 1px solid #EAE0D9;
+      opacity: 0; animation: fadeInContent 0.6s ease-out 0.3s forwards;
+    }
+    .cost-title {
+      font-size: 14px; font-weight: 700; color: #2B2A27; margin-bottom: 14px;
+    }
+    .cost-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 0; border-bottom: 1px solid #F0EBE5;
+    }
+    .cost-row:last-child { border-bottom: none; }
+    .cost-label { font-size: 13px; color: #5D4E42; }
+    .cost-value { font-size: 14px; font-weight: 700; color: #E07A59; }
+    .cost-value.warn { color: #C4563A; }
+    /* Bottom features */
+    .bottom-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; flex: 1;
+    }
+    .b-card {
+      background: #FFFFFF; border-radius: 10px; padding: 18px 20px;
+      border: 1px solid #EAE0D9;
+      opacity: 0; animation: fadeInContent 0.5s ease-out forwards;
+    }
+    .b-card:nth-child(1) { animation-delay: 0.4s; border-left: 3px solid #9FD3B8; }
+    .b-card:nth-child(2) { animation-delay: 0.5s; border-left: 3px solid #E07A59; }
+    .b-card:nth-child(3) { animation-delay: 0.6s; border-left: 3px solid #D4A373; }
+    .b-title {
+      font-size: 14px; font-weight: 700; color: #2B2A27; margin-bottom: 6px;
+    }
+    .b-desc {
+      font-size: 13px; color: #5D4E42; line-height: 1.6;
+    }
+    .b-desc strong { color: #2B2A27; }
+    .footer {
+      position: absolute; bottom: 30px; left: 70px; right: 70px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 14px; color: #9E9086;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <div class="header-row">
+      <h1>Devin — 全自动"初级工程师"</h1>
+      <span class="section-tag">END-TO-END</span>
+    </div>
+    <p class="key-point">全自动 Agent 先行者，产品完成度高，但面临多面夹击</p>
+    <div class="top-section">
+      <div class="workflow">
+        <div class="wf-title">&#9654; 典型工作流</div>
+        <div class="wf-steps">
+          <div class="wf-step user">&#128100;<br>用户派活<br><small>Slack / Linear</small></div>
+          <span class="wf-arrow">&#8594;</span>
+          <div class="wf-step agent">&#129302;<br>Devin 探索<br><small>自主分析</small></div>
+          <span class="wf-arrow">&#8594;</span>
+          <div class="wf-step agent">&#128187;<br>生成初版<br><small>代码实现</small></div>
+          <span class="wf-arrow">&#8594;</span>
+          <div class="wf-step review">&#128270;<br>人类审查<br><small>Review & 精修</small></div>
+        </div>
+        <div class="wf-note">"Treat Devin like a junior engineer" — 官方建议</div>
+      </div>
+      <div class="cost-card">
+        <div class="cost-title">&#128176; 成本现实</div>
+        <div class="cost-row">
+          <span class="cost-label">起步订阅</span>
+          <span class="cost-value">$20/月</span>
+        </div>
+        <div class="cost-row">
+          <span class="cost-label">单个 ACU</span>
+          <span class="cost-value">$2.25</span>
+        </div>
+        <div class="cost-row">
+          <span class="cost-label">一个 issue 处理</span>
+          <span class="cost-value warn">$5-10+</span>
+        </div>
+        <div class="cost-row">
+          <span class="cost-label">复杂 bug 修复（乱撞）</span>
+          <span class="cost-value warn">$20+ 迅速蒸发</span>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-grid">
+      <div class="b-card">
+        <div class="b-title">&#9989; Integration 最强</div>
+        <div class="b-desc">Slack / Linear / Jira 直接派活。Knowledge Base & Playbook 系统完善。<strong>Confidence Rating</strong> 避免盲目烧钱。</div>
+      </div>
+      <div class="b-card">
+        <div class="b-title">&#9888; 模型智力局限</div>
+        <div class="b-desc">模型水平一般般，复杂 bug 容易乱撞。最佳用法：<strong>Devin 生成初版 → Cursor/Claude Code 精修</strong>。</div>
+      </div>
+      <div class="b-card">
+        <div class="b-title">&#128680; 竞争压力</div>
+        <div class="b-desc">Cursor Background Agent + Claude Code CI 正在侵蚀 Devin 地盘。Integration 这种"脏活累活"能否成为壁垒？</div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>工具分析 · Devin</span>
+      <span>9 / 15</span>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>总结与建议</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body {
+      margin: 0; padding: 0; width: 100vw; height: 100vh;
+      display: flex; justify-content: center; align-items: center;
+      background-color: #e0e0e0;
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif;
+    }
+    .slide {
+      width: 1280px; height: 720px;
+      background-color: #F7F4EF;
+      position: relative; overflow: hidden;
+      box-sizing: border-box;
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: center; text-align: center;
+    }
+    @keyframes fadeInContent { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInShape { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+    .accent-shape { position: absolute; border-radius: 50%; opacity: 0; animation: fadeInShape 2s ease-out forwards; }
+    .shape1 { width: 350px; height: 350px; background: radial-gradient(circle, rgba(224,122,89,0.1) 0%, transparent 70%); top: -120px; right: -100px; }
+    .shape2 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(159,211,184,0.08) 0%, transparent 70%); bottom: -100px; left: -80px; }
+    .main-title {
+      font-size: 42px; font-weight: 700; color: #2B2A27; margin: 0 0 12px;
+      z-index: 2;
+      animation: fadeInContent 0.8s ease-out forwards; opacity: 0;
+    }
+    .main-subtitle {
+      font-size: 20px; color: #E07A59; font-weight: 600; margin: 0 0 40px;
+      z-index: 2;
+      animation: fadeInContent 0.8s ease-out 0.15s forwards; opacity: 0;
+    }
+    .recommendations {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+      max-width: 900px; z-index: 2;
+      animation: fadeInContent 0.8s ease-out 0.3s forwards; opacity: 0;
+    }
+    .rec-card {
+      background: #FFFFFF; border-radius: 12px; padding: 24px 22px;
+      border: 1px solid #EAE0D9; text-align: left;
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .rec-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .rec-card:nth-child(1) .rec-icon { background: rgba(224,122,89,0.1); }
+    .rec-card:nth-child(2) .rec-icon { background: rgba(159,211,184,0.12); }
+    .rec-card:nth-child(3) .rec-icon { background: rgba(212,163,115,0.12); }
+    .rec-card:nth-child(4) .rec-icon { background: rgba(93,78,66,0.08); }
+    .rec-content {}
+    .rec-title {
+      font-size: 16px; font-weight: 700; color: #2B2A27; margin-bottom: 6px;
+    }
+    .rec-desc {
+      font-size: 13px; color: #5D4E42; line-height: 1.55;
+    }
+    .closing-text {
+      margin-top: 36px; font-size: 18px; color: #5D4E42; z-index: 2;
+      max-width: 700px; line-height: 1.6;
+      animation: fadeInContent 0.8s ease-out 0.5s forwards; opacity: 0;
+    }
+    .closing-text strong {
+      color: #E07A59; font-weight: 600;
+    }
+    .footer {
+      position: absolute; bottom: 30px; left: 70px; right: 70px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 14px; color: #9E9086; z-index: 2;
+    }
+    .footer-center {
+      font-size: 20px; font-weight: 600; color: #2B2A27;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <div class="accent-shape shape1"></div>
+    <div class="accent-shape shape2"></div>
+    <h1 class="main-title">总结与建议</h1>
+    <p class="main-subtitle">拥抱变化、审慎实践，让 AI Agent 成为你的得力"副驾"</p>
+    <div class="recommendations">
+      <div class="rec-card">
+        <div class="rec-icon">&#128640;</div>
+        <div class="rec-content">
+          <div class="rec-title">立即行动</div>
+          <div class="rec-desc">从你最常用的场景开始，试用 1-2 个工具。不必等到"完美"。</div>
+        </div>
+      </div>
+      <div class="rec-card">
+        <div class="rec-icon">&#128270;</div>
+        <div class="rec-content">
+          <div class="rec-title">保持审慎</div>
+          <div class="rec-desc">始终 review AI 产出，人类是最终负责人。AI 再智能也只是帮手。</div>
+        </div>
+      </div>
+      <div class="rec-card">
+        <div class="rec-icon">&#129309;</div>
+        <div class="rec-content">
+          <div class="rec-title">团队共建</div>
+          <div class="rec-desc">在团队内分享经验、积累 prompt 和知识库，形成正向循环。</div>
+        </div>
+      </div>
+      <div class="rec-card">
+        <div class="rec-icon">&#127793;</div>
+        <div class="rec-content">
+          <div class="rec-title">关注本质</div>
+          <div class="rec-desc">工具会更迭，但"清晰表达需求 + 审查 AI 输出"的能力是持久的。</div>
+        </div>
+      </div>
+    </div>
+    <p class="closing-text">
+      多说无益，最好的方式还是<strong>自己上手试</strong>。
+    </p>
+    <div class="footer">
+      <span></span>
+      <span class="footer-center">谢谢 &middot; Q&A</span>
+      <span>15 / 15</span>
+    </div>
+  </div>
+</body>
+</html>

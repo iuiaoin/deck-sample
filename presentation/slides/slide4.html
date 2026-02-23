@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursor — 野心勃勃的领跑者</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body {
+      margin: 0; padding: 0; width: 100vw; height: 100vh;
+      display: flex; justify-content: center; align-items: center;
+      background-color: #e0e0e0;
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif;
+    }
+    .slide {
+      width: 1280px; height: 720px;
+      background-color: #F7F4EF;
+      position: relative; overflow: hidden;
+      box-sizing: border-box;
+      display: flex; flex-direction: column;
+      padding: 55px 70px 50px;
+    }
+    @keyframes fadeInContent { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .header-row {
+      display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;
+      animation: fadeInContent 0.6s ease-out;
+    }
+    h1 { color: #2B2A27; font-size: 38px; font-weight: 700; margin: 0; }
+    .section-tag {
+      background: #E07A59; color: #fff; font-size: 12px; font-weight: 600;
+      padding: 4px 14px; border-radius: 12px; letter-spacing: 0.5px; flex-shrink: 0; margin-top: 6px;
+    }
+    .key-point {
+      font-size: 17px; color: #E07A59; font-weight: 600; margin: 0 0 28px;
+      animation: fadeInContent 0.6s ease-out 0.1s forwards; opacity: 0;
+    }
+    .content-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+      flex: 1;
+    }
+    .feature-card {
+      background: #FFFFFF; border-radius: 10px; padding: 22px 24px;
+      border: 1px solid #EAE0D9;
+      opacity: 0; animation: fadeInContent 0.5s ease-out forwards;
+    }
+    .feature-card:nth-child(1) { animation-delay: 0.2s; }
+    .feature-card:nth-child(2) { animation-delay: 0.3s; }
+    .feature-card:nth-child(3) { animation-delay: 0.4s; }
+    .feature-card:nth-child(4) { animation-delay: 0.5s; }
+    .feature-card .label {
+      font-size: 15px; font-weight: 700; color: #2B2A27; margin-bottom: 8px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .feature-card .label .icon { font-size: 18px; }
+    .feature-card .desc {
+      font-size: 14px; color: #5D4E42; line-height: 1.65;
+    }
+    .feature-card.weakness {
+      border-left: 3px solid #D4A373;
+    }
+    .feature-card.strength {
+      border-left: 3px solid #9FD3B8;
+    }
+    .badge {
+      display: inline-block; background: rgba(224,122,89,0.1); color: #C4563A;
+      font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 4px;
+    }
+    .verdict {
+      margin-top: 16px; padding: 12px 18px;
+      background: rgba(159,211,184,0.1); border-radius: 8px;
+      font-size: 14px; color: #4A3F35; line-height: 1.5;
+      opacity: 0; animation: fadeInContent 0.5s ease-out 0.6s forwards;
+    }
+    .verdict strong { color: #2B2A27; }
+    .footer {
+      position: absolute; bottom: 30px; left: 70px; right: 70px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 14px; color: #9E9086;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <div class="header-row">
+      <h1>Cursor — 野心勃勃的领跑者</h1>
+      <span class="section-tag">AI-ASSISTED</span>
+    </div>
+    <p class="key-point">杀手级 TAB Edit + 先发品牌优势，稳坐 AI Code Editor 头把交椅</p>
+    <div class="content-grid">
+      <div class="feature-card strength">
+        <div class="label"><span class="icon">&#10024;</span> TAB Edit 核心优势</div>
+        <div class="desc">不只是补全，而是<strong>"编辑"</strong>代码。改一处后自动跳到后续位置联动修改，重构时极其有用。这是 Copilot "append only" 无法比拟的体验。</div>
+      </div>
+      <div class="feature-card strength">
+        <div class="label"><span class="icon">&#128200;</span> 品牌心智先发</div>
+        <div class="desc">Agent Mode 在非程序员群体中先火，成功将 <span class="badge">AI 编程 = Cursor</span> 植入大众认知，哪怕技术并非最领先。</div>
+      </div>
+      <div class="feature-card strength">
+        <div class="label"><span class="icon">&#128640;</span> 走向全自动</div>
+        <div class="desc">Background Agent + BugBot 信号明确：要和 Devin 硬碰硬。类似 Tesla vs Waymo 的路线——从辅助逐步走向自动。<span class="badge">$9B 估值</span></div>
+      </div>
+      <div class="feature-card weakness">
+        <div class="label"><span class="icon">&#9888;</span> 短板与争议</div>
+        <div class="desc">IDE 本身迭代比 VS Code 慢半拍；Max Mode 额外收 20% margin；定价模式从 "fast requests" 到 "Requests" 仍不清晰。</div>
+      </div>
+    </div>
+    <div class="verdict">
+      <strong>选型建议：</strong>如果不知道什么工具最适合自己，Cursor 是一个比较稳的选择——资金充足，不一定最强但不会差。
+    </div>
+    <div class="footer">
+      <span>工具分析 · Cursor</span>
+      <span>4 / 15</span>
+    </div>
+  </div>
+</body>
+</html>

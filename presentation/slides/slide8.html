@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Augment Code — 全仓库理解</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body {
+      margin: 0; padding: 0; width: 100vw; height: 100vh;
+      display: flex; justify-content: center; align-items: center;
+      background-color: #e0e0e0;
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif;
+    }
+    .slide {
+      width: 1280px; height: 720px;
+      background-color: #F7F4EF;
+      position: relative; overflow: hidden;
+      box-sizing: border-box;
+      display: flex; flex-direction: column;
+      padding: 55px 70px 50px;
+    }
+    @keyframes fadeInContent { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .header-row {
+      display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;
+      animation: fadeInContent 0.6s ease-out;
+    }
+    h1 { color: #2B2A27; font-size: 38px; font-weight: 700; margin: 0; }
+    .section-tag {
+      background: #5D4E42; color: #F7F4EF; font-size: 12px; font-weight: 600;
+      padding: 4px 14px; border-radius: 12px; letter-spacing: 0.5px; flex-shrink: 0; margin-top: 6px;
+    }
+    .key-point {
+      font-size: 16px; color: #E07A59; font-weight: 600; margin: 0 0 28px;
+      animation: fadeInContent 0.6s ease-out 0.1s forwards; opacity: 0;
+    }
+    .main-content {
+      display: flex; gap: 32px; flex: 1;
+    }
+    /* Pipeline diagram */
+    .pipeline {
+      display: flex; flex-direction: column; align-items: center; gap: 0;
+      width: 260px; flex-shrink: 0;
+      opacity: 0; animation: fadeInContent 0.8s ease-out 0.2s forwards;
+    }
+    .pipe-stage {
+      width: 220px; padding: 16px 18px; border-radius: 10px;
+      text-align: center; font-weight: 600; font-size: 14px;
+      position: relative;
+    }
+    .pipe-arrow {
+      width: 2px; height: 20px; background: #D4A373; margin: 0 auto;
+    }
+    .pipe-arrow::after {
+      content: ''; display: block; width: 0; height: 0;
+      border-left: 5px solid transparent; border-right: 5px solid transparent;
+      border-top: 6px solid #D4A373;
+      margin: 0 auto; position: relative; left: -4px;
+    }
+    .stage-code { background: rgba(93,78,66,0.08); color: #5D4E42; border: 1px solid #D4C8BE; }
+    .stage-embed { background: rgba(224,122,89,0.1); color: #C4563A; border: 1px solid rgba(224,122,89,0.25); }
+    .stage-kb { background: rgba(159,211,184,0.15); color: #3D7A5A; border: 1px solid rgba(159,211,184,0.35); }
+    .stage-ai { background: #2B2A27; color: #F7F4EF; }
+    .stage-sub { font-size: 11px; font-weight: 400; color: #9E9086; margin-top: 4px; }
+    /* Info cards */
+    .info-col {
+      display: flex; flex-direction: column; gap: 16px; flex: 1;
+    }
+    .info-card {
+      background: #FFFFFF; border-radius: 10px; padding: 20px 22px;
+      border: 1px solid #EAE0D9;
+      opacity: 0; animation: fadeInContent 0.5s ease-out forwards;
+    }
+    .info-card:nth-child(1) { animation-delay: 0.3s; }
+    .info-card:nth-child(2) { animation-delay: 0.4s; }
+    .info-card:nth-child(3) { animation-delay: 0.5s; }
+    .info-card:nth-child(4) { animation-delay: 0.6s; }
+    .ic-title {
+      font-size: 15px; font-weight: 700; color: #2B2A27; margin-bottom: 6px;
+    }
+    .ic-desc {
+      font-size: 13px; color: #5D4E42; line-height: 1.6;
+    }
+    .ic-desc strong { color: #2B2A27; }
+    .pro-tag {
+      display: inline-block; background: rgba(159,211,184,0.15); color: #3D7A5A;
+      font-size: 11px; font-weight: 600; padding: 1px 8px; border-radius: 4px;
+    }
+    .con-tag {
+      display: inline-block; background: rgba(212,163,115,0.15); color: #8B6D45;
+      font-size: 11px; font-weight: 600; padding: 1px 8px; border-radius: 4px;
+    }
+    .footer {
+      position: absolute; bottom: 30px; left: 70px; right: 70px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 14px; color: #9E9086;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <div class="header-row">
+      <h1>Augment Code — 全仓库理解</h1>
+      <span class="section-tag">IDE 集成</span>
+    </div>
+    <p class="key-point">全仓库 Embedding 预构建知识库，模型回答时如同有"代码百科"可查</p>
+    <div class="main-content">
+      <div class="pipeline">
+        <div class="pipe-stage stage-code">
+          &#128193; 代码仓库
+          <div class="stage-sub">60 万+ 行 · Monorepo</div>
+        </div>
+        <div class="pipe-arrow"></div>
+        <div class="pipe-stage stage-embed">
+          &#128204; Embedding 预处理
+          <div class="stage-sub">全仓库向量化</div>
+        </div>
+        <div class="pipe-arrow"></div>
+        <div class="pipe-stage stage-kb">
+          &#128218; 知识库
+          <div class="stage-sub">跨文件 / 跨模块索引</div>
+        </div>
+        <div class="pipe-arrow"></div>
+        <div class="pipe-stage stage-ai">
+          &#129302; AI 响应
+          <div class="stage-sub" style="color: #9E9086;">RAG 增强回答</div>
+        </div>
+      </div>
+      <div class="info-col">
+        <div class="info-card">
+          <div class="ic-title"><span class="pro-tag">优势</span> 核心差异化</div>
+          <div class="ic-desc">全仓库嵌入预构建知识库。不同于 grep 式搜索，能回答<strong>"xxx 是怎么 work 的"</strong>这类模糊问题——这是普通 Agent 的短板。</div>
+        </div>
+        <div class="info-card">
+          <div class="ic-title"><span class="pro-tag">优势</span> 适用场景</div>
+          <div class="ic-desc">大型代码库（<strong>60 万+ 行</strong>）、Monorepo、需要跨文件/跨模块理解的复杂任务。Copilot 企业版也在追赶类似能力（语义索引）。</div>
+        </div>
+        <div class="info-card">
+          <div class="ic-title"><span class="pro-tag">定位</span> 深度上下文增强层</div>
+          <div class="ic-desc">不是通用 AI IDE，而是可与现有 IDE 配合的<strong>上下文增强层</strong>。专注于 "让模型真正理解你的代码库"。</div>
+        </div>
+        <div class="info-card">
+          <div class="ic-title"><span class="con-tag">局限</span> 需要注意</div>
+          <div class="ic-desc">对小项目优势不明显，依赖预处理步骤。Agent 时代的 grep 式自主探索可能部分替代此能力。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>工具分析 · Augment Code</span>
+      <span>8 / 15</span>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>未来趋势与行业走向</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body {
+      margin: 0; padding: 0; width: 100vw; height: 100vh;
+      display: flex; justify-content: center; align-items: center;
+      background-color: #e0e0e0;
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif;
+    }
+    .slide {
+      width: 1280px; height: 720px;
+      background-color: #F7F4EF;
+      position: relative; overflow: hidden;
+      box-sizing: border-box;
+      display: flex; flex-direction: column;
+      padding: 55px 70px 50px;
+    }
+    @keyframes fadeInContent { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    h1 {
+      color: #2B2A27; font-size: 38px; font-weight: 700; margin: 0 0 6px;
+      animation: fadeInContent 0.6s ease-out;
+    }
+    .key-point {
+      font-size: 16px; color: #E07A59; font-weight: 600; margin: 0 0 20px;
+      animation: fadeInContent 0.6s ease-out 0.1s forwards; opacity: 0;
+    }
+    /* Evolution timeline */
+    .evolution {
+      display: flex; align-items: center; justify-content: center; gap: 0;
+      margin-bottom: 24px; padding: 18px 30px;
+      background: #FFFFFF; border-radius: 10px; border: 1px solid #EAE0D9;
+      opacity: 0; animation: fadeInContent 0.7s ease-out 0.2s forwards;
+    }
+    .evo-stage {
+      text-align: center; padding: 8px 14px;
+    }
+    .evo-label {
+      font-size: 12px; font-weight: 600; color: #5D4E42;
+    }
+    .evo-year {
+      font-size: 10px; color: #9E9086; margin-top: 2px;
+    }
+    .evo-stage.current .evo-label { color: #E07A59; font-weight: 700; }
+    .evo-stage.future .evo-label { color: #9E9086; }
+    .evo-arrow {
+      color: #D4A373; font-size: 18px; margin: 0 4px;
+    }
+    .evo-dot {
+      width: 10px; height: 10px; border-radius: 50%; margin: 0 auto 6px;
+    }
+    .evo-dot.past { background: #9FD3B8; }
+    .evo-dot.now { background: #E07A59; }
+    .evo-dot.future { background: #EAE0D9; }
+    /* Trend cards */
+    .trends-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px; flex: 1;
+    }
+    .trend-card {
+      background: #FFFFFF; border-radius: 10px; padding: 22px 22px;
+      border: 1px solid #EAE0D9;
+      opacity: 0; animation: fadeInContent 0.5s ease-out forwards;
+    }
+    .trend-card:nth-child(1) { animation-delay: 0.35s; }
+    .trend-card:nth-child(2) { animation-delay: 0.45s; }
+    .trend-card:nth-child(3) { animation-delay: 0.55s; }
+    .trend-card:nth-child(4) { animation-delay: 0.65s; }
+    .tc-header {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+    }
+    .tc-num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: #E07A59; color: #FFFFFF;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700; flex-shrink: 0;
+    }
+    .tc-title {
+      font-size: 16px; font-weight: 700; color: #2B2A27;
+    }
+    .tc-desc {
+      font-size: 13px; color: #5D4E42; line-height: 1.65; padding-left: 38px;
+    }
+    .tc-desc strong { color: #2B2A27; }
+    .footer {
+      position: absolute; bottom: 30px; left: 70px; right: 70px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 14px; color: #9E9086;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <h1>未来趋势与行业走向</h1>
+    <p class="key-point">Agent 能力从"聪明"走向"持久"，行业格局远未定型</p>
+    <div class="evolution">
+      <div class="evo-stage">
+        <div class="evo-dot past"></div>
+        <div class="evo-label">Autocomplete</div>
+        <div class="evo-year">2021</div>
+      </div>
+      <span class="evo-arrow">&#8594;</span>
+      <div class="evo-stage">
+        <div class="evo-dot past"></div>
+        <div class="evo-label">Chat / Q&A</div>
+        <div class="evo-year">2023</div>
+      </div>
+      <span class="evo-arrow">&#8594;</span>
+      <div class="evo-stage">
+        <div class="evo-dot past"></div>
+        <div class="evo-label">Agent Mode</div>
+        <div class="evo-year">2024</div>
+      </div>
+      <span class="evo-arrow">&#8594;</span>
+      <div class="evo-stage current">
+        <div class="evo-dot now"></div>
+        <div class="evo-label">Background Agent</div>
+        <div class="evo-year">2025</div>
+      </div>
+      <span class="evo-arrow">&#8594;</span>
+      <div class="evo-stage future">
+        <div class="evo-dot future"></div>
+        <div class="evo-label">Fully Autonomous</div>
+        <div class="evo-year">?</div>
+      </div>
+    </div>
+    <div class="trends-grid">
+      <div class="trend-card">
+        <div class="tc-header">
+          <div class="tc-num">1</div>
+          <div class="tc-title">半自动 → 全自动</div>
+        </div>
+        <div class="tc-desc">从 AI-assisted coding 向全自动 Agent 进化是明确方向。Agent 能独立工作的时间越来越长，做事的数量和质量持续提升。</div>
+      </div>
+      <div class="trend-card">
+        <div class="tc-header">
+          <div class="tc-num">2</div>
+          <div class="tc-title">IDE 与 CLI 双轨并行</div>
+        </div>
+        <div class="tc-desc">Cursor 要做 <strong>All-in-one 入口</strong>，Claude Code 证明 IDE 非必须。程序员自己写代码时仍会回归传统 IDE，Agent 工作无需 IDE。</div>
+      </div>
+      <div class="trend-card">
+        <div class="tc-header">
+          <div class="tc-num">3</div>
+          <div class="tc-title">成本是最大瓶颈</div>
+        </div>
+        <div class="tc-desc">LLM 降价将<strong>重塑格局</strong>。原厂做 agent 有闲时资源优势。性能 vs 成本的 tradeoff 是 agent 公司的核心决策。</div>
+      </div>
+      <div class="trend-card">
+        <div class="tc-header">
+          <div class="tc-num">4</div>
+          <div class="tc-title">壁垒的本质是"快"</div>
+        </div>
+        <div class="tc-desc">在这个发展过快的领域，<strong>任何技术领先都可能被迅速追赶</strong>。一旦慢下来，就可能被超越。Cursor 创始人的残酷认知。</div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>未来趋势</span>
+      <span>14 / 15</span>
+    </div>
+  </div>
+</body>
+</html>

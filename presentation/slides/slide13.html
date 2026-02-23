@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实战经验与踩坑总结</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body {
+      margin: 0; padding: 0; width: 100vw; height: 100vh;
+      display: flex; justify-content: center; align-items: center;
+      background-color: #e0e0e0;
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif;
+    }
+    .slide {
+      width: 1280px; height: 720px;
+      background-color: #F7F4EF;
+      position: relative; overflow: hidden;
+      box-sizing: border-box;
+      display: flex; flex-direction: column;
+      padding: 55px 70px 50px;
+    }
+    @keyframes fadeInContent { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    h1 {
+      color: #2B2A27; font-size: 38px; font-weight: 700; margin: 0 0 6px;
+      animation: fadeInContent 0.6s ease-out;
+    }
+    .key-point {
+      font-size: 16px; color: #E07A59; font-weight: 600; margin: 0 0 28px;
+      animation: fadeInContent 0.6s ease-out 0.1s forwards; opacity: 0;
+    }
+    .insights-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; flex: 1;
+    }
+    .insight-card {
+      background: #FFFFFF; border-radius: 12px; padding: 28px 24px;
+      border: 1px solid #EAE0D9;
+      display: flex; flex-direction: column;
+      opacity: 0; animation: fadeInContent 0.6s ease-out forwards;
+    }
+    .insight-card:nth-child(1) { animation-delay: 0.2s; border-top: 4px solid #E07A59; }
+    .insight-card:nth-child(2) { animation-delay: 0.35s; border-top: 4px solid #9FD3B8; }
+    .insight-card:nth-child(3) { animation-delay: 0.5s; border-top: 4px solid #D4A373; }
+    .ic-icon { font-size: 32px; margin-bottom: 14px; }
+    .ic-title {
+      font-size: 20px; font-weight: 700; color: #2B2A27; margin-bottom: 14px;
+    }
+    .ic-points { list-style: none; padding: 0; margin: 0; }
+    .ic-points li {
+      font-size: 14px; color: #5D4E42; line-height: 1.65; margin-bottom: 12px;
+      padding-left: 16px; position: relative;
+    }
+    .ic-points li::before {
+      content: ''; position: absolute; left: 0; top: 8px;
+      width: 6px; height: 6px; border-radius: 50%;
+    }
+    .insight-card:nth-child(1) .ic-points li::before { background: #E07A59; }
+    .insight-card:nth-child(2) .ic-points li::before { background: #9FD3B8; }
+    .insight-card:nth-child(3) .ic-points li::before { background: #D4A373; }
+    .ic-points li strong { color: #2B2A27; font-weight: 600; }
+    .bottom-quote {
+      margin-top: 18px; padding: 14px 20px;
+      background: rgba(224,122,89,0.06); border-radius: 8px;
+      border-left: 3px solid #E07A59;
+      font-size: 15px; color: #4A3F35; line-height: 1.5; font-style: italic;
+      opacity: 0; animation: fadeInContent 0.5s ease-out 0.65s forwards;
+    }
+    .bottom-quote strong { font-style: normal; color: #E07A59; }
+    .footer {
+      position: absolute; bottom: 30px; left: 70px; right: 70px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 14px; color: #9E9086;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <h1>实战经验与踩坑总结</h1>
+    <p class="key-point">Agent 是一门"手艺"——效果极度依赖使用者的 prompt 能力和对工具的理解</p>
+    <div class="insights-grid">
+      <div class="insight-card">
+        <div class="ic-icon">&#128295;</div>
+        <div class="ic-title">手艺与半成品</div>
+        <ul class="ic-points">
+          <li>加功能很爽，但<strong>微调按钮位置/布局/交互</strong>时往往改不对</li>
+          <li>了解 AI 能力边界 + prompt engineering 是核心技能</li>
+          <li>Agent <strong>越用越好用</strong>——需要在团队内持续积累经验</li>
+        </ul>
+      </div>
+      <div class="insight-card">
+        <div class="ic-icon">&#128176;</div>
+        <div class="ic-title">成本与投入</div>
+        <ul class="ic-points">
+          <li>一个任务 <strong>$5-10</strong> 是常态；复杂任务 $20+ 迅速蒸发</li>
+          <li>"穷人思维"反而限制了探索；但盲目跑也会烧钱</li>
+          <li>写好 <strong>AGENT.md / Cursor Rules</strong>，团队内积累 prompt 和知识库</li>
+        </ul>
+      </div>
+      <div class="insight-card">
+        <div class="ic-icon">&#128260;</div>
+        <div class="ic-title">心态与工作流</div>
+        <ul class="ic-points">
+          <li>把 Agent 当<strong>外包 / 初级工程师</strong>：派活 → 检查 → 给反馈</li>
+          <li>最佳实践：Agent 生成初版 → 人工/Cursor 精修</li>
+          <li>不要期望一次性搞定，<strong>迭代式协作</strong>效果更好</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom-quote">
+      <strong>"Still early, but already useful (if used correctly)"</strong> — 所有工具都处于这个阶段。未来能把 Agent 用得最好的，大概率还是专业人士。
+    </div>
+    <div class="footer">
+      <span>实战经验</span>
+      <span>13 / 15</span>
+    </div>
+  </div>
+</body>
+</html>

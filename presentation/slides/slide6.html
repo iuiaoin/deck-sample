@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code — 不需要 IDE 的 Agent</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500&display=swap');
+    body {
+      margin: 0; padding: 0; width: 100vw; height: 100vh;
+      display: flex; justify-content: center; align-items: center;
+      background-color: #e0e0e0;
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif;
+    }
+    .slide {
+      width: 1280px; height: 720px;
+      background-color: #F7F4EF;
+      position: relative; overflow: hidden;
+      box-sizing: border-box;
+      display: flex; flex-direction: column;
+      padding: 55px 70px 50px;
+    }
+    @keyframes fadeInContent { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .header-row {
+      display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;
+      animation: fadeInContent 0.6s ease-out;
+    }
+    h1 { color: #2B2A27; font-size: 36px; font-weight: 700; margin: 0; }
+    .section-tag {
+      background: #9FD3B8; color: #2B2A27; font-size: 12px; font-weight: 600;
+      padding: 4px 14px; border-radius: 12px; letter-spacing: 0.5px; flex-shrink: 0; margin-top: 6px;
+    }
+    .key-point {
+      font-size: 16px; color: #E07A59; font-weight: 600; margin: 0 0 22px;
+      animation: fadeInContent 0.6s ease-out 0.1s forwards; opacity: 0;
+    }
+    .main-content {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; flex: 1;
+    }
+    .left-col { display: flex; flex-direction: column; gap: 16px; }
+    .right-col { display: flex; flex-direction: column; gap: 16px; }
+    .feature-card {
+      background: #FFFFFF; border-radius: 10px; padding: 20px 22px;
+      border: 1px solid #EAE0D9;
+      opacity: 0; animation: fadeInContent 0.5s ease-out forwards;
+    }
+    .feature-card:nth-child(1) { animation-delay: 0.2s; }
+    .feature-card:nth-child(2) { animation-delay: 0.3s; }
+    .fc-title {
+      font-size: 14px; font-weight: 700; color: #2B2A27; margin-bottom: 8px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .fc-title .icon { font-size: 16px; }
+    .fc-desc {
+      font-size: 13px; color: #5D4E42; line-height: 1.65;
+    }
+    .fc-desc strong { color: #2B2A27; }
+    .terminal-card {
+      background: #2B2A27; border-radius: 10px; padding: 18px 20px;
+      flex: 1;
+      opacity: 0; animation: fadeInContent 0.6s ease-out 0.35s forwards;
+    }
+    .terminal-header {
+      display: flex; gap: 6px; margin-bottom: 14px;
+    }
+    .terminal-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+    .dot-red { background: #E07A59; }
+    .dot-yellow { background: #D4A373; }
+    .dot-green { background: #9FD3B8; }
+    .terminal-content {
+      font-family: 'Source Code Pro', monospace; font-size: 12px;
+      color: #D4D0C8; line-height: 1.7;
+    }
+    .terminal-content .prompt { color: #9FD3B8; }
+    .terminal-content .cmd { color: #F7F4EF; }
+    .terminal-content .output { color: #9E9086; }
+    .terminal-content .highlight { color: #E07A59; }
+    .stats-row {
+      display: flex; gap: 16px;
+      opacity: 0; animation: fadeInContent 0.5s ease-out 0.45s forwards;
+    }
+    .stat-card {
+      flex: 1; background: #FFFFFF; border-radius: 10px; padding: 16px 18px;
+      border: 1px solid #EAE0D9; text-align: center;
+    }
+    .stat-value {
+      font-size: 24px; font-weight: 700; color: #E07A59;
+    }
+    .stat-label {
+      font-size: 11px; color: #9E9086; font-weight: 500; margin-top: 4px;
+    }
+    .footer {
+      position: absolute; bottom: 30px; left: 70px; right: 70px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 14px; color: #9E9086;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <div class="header-row">
+      <h1>Claude Code — 不需要 IDE 的 Agent</h1>
+      <span class="section-tag">CLI AGENT</span>
+    </div>
+    <p class="key-point">CLI 的可组合性 + 精心调教的 prompt，体感明显"更聪明"</p>
+    <div class="main-content">
+      <div class="left-col">
+        <div class="feature-card">
+          <div class="fc-title"><span class="icon">&#128161;</span> 核心理念：第一性原理</div>
+          <div class="fc-desc">CLI 无限可组合性——不深度集成 IDE，而是利用终端的通用能力。<strong>Prompt + Tool Spec 精心调教</strong>，写得都非常长，体感比 Cursor 更聪明。</div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-title"><span class="icon">&#128260;</span> 从"聪明"到"持久"</div>
+          <div class="fc-desc">宣称能独立跑 <strong>7 小时</strong>。可观察到任务规划、自我反思行为：先说"我要做 123"，写到一半会重新思考更简单的方案。</div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-value">$20</div>
+            <div class="stat-label">Pro Plan / 月</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">7h</div>
+            <div class="stat-label">最长自主执行</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">CI</div>
+            <div class="stat-label">GitHub 集成</div>
+          </div>
+        </div>
+      </div>
+      <div class="right-col">
+        <div class="terminal-card">
+          <div class="terminal-header">
+            <div class="terminal-dot dot-red"></div>
+            <div class="terminal-dot dot-yellow"></div>
+            <div class="terminal-dot dot-green"></div>
+          </div>
+          <div class="terminal-content">
+<span class="prompt">$</span> <span class="cmd">claude</span>
+<span class="output">
+Claude Code v1.0
+
+</span><span class="prompt">&gt;</span> <span class="cmd">重构 auth 模块，将 session 迁移到 JWT</span>
+<span class="output">
+我来分析当前的 auth 实现...
+
+</span><span class="highlight">Plan:</span><span class="output">
+1. 读取现有 session 逻辑
+2. 设计 JWT token 结构
+3. 替换 middleware
+4. 更新测试用例
+
+</span><span class="output">让我先看看有没有更简单的方式...</span>
+<span class="highlight">
+Reading: src/auth/session.ts
+Reading: src/middleware/auth.ts
+Editing: src/auth/jwt.ts ...</span>
+          </div>
+        </div>
+        <div class="feature-card" style="animation-delay: 0.5s;">
+          <div class="fc-title"><span class="icon">&#127793;</span> 生态与战略</div>
+          <div class="fc-desc">GitHub 上 @claude-code 自动干活（CI 集成）。断供 Windsurf 表明战略决心。<strong>LLM 原厂闲时资源优势</strong>——同等任务 API 计费 $10+，Pro Plan 大幅降低试用门槛。</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>工具分析 · Claude Code</span>
+      <span>6 / 15</span>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>行业全景：AI Coding 赛道细分</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body {
+      margin: 0; padding: 0; width: 100vw; height: 100vh;
+      display: flex; justify-content: center; align-items: center;
+      background-color: #e0e0e0;
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif;
+    }
+    .slide {
+      width: 1280px; height: 720px;
+      background-color: #F7F4EF;
+      position: relative; overflow: hidden;
+      box-sizing: border-box;
+      display: flex; flex-direction: column;
+      padding: 55px 70px 50px;
+    }
+    @keyframes fadeInContent { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    h1 {
+      color: #2B2A27; font-size: 40px; font-weight: 700; margin: 0 0 8px;
+      animation: fadeInContent 0.6s ease-out;
+    }
+    .subtitle {
+      font-size: 18px; color: #E07A59; font-weight: 600; margin: 0 0 30px;
+      animation: fadeInContent 0.6s ease-out 0.1s forwards; opacity: 0;
+    }
+    .cards-container {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px;
+      flex: 1;
+    }
+    .card {
+      background: #FFFFFF; border-radius: 12px; padding: 28px 24px;
+      border: 1px solid #EAE0D9;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      display: flex; flex-direction: column;
+      opacity: 0; animation: fadeInContent 0.6s ease-out forwards;
+    }
+    .card:nth-child(1) { animation-delay: 0.2s; border-top: 3px solid #E07A59; }
+    .card:nth-child(2) { animation-delay: 0.35s; border-top: 3px solid #9FD3B8; }
+    .card:nth-child(3) { animation-delay: 0.5s; border-top: 3px solid #5D4E42; }
+    .card-icon {
+      font-size: 28px; margin-bottom: 12px;
+    }
+    .card-title {
+      font-size: 20px; font-weight: 700; color: #2B2A27; margin-bottom: 4px;
+    }
+    .card-label {
+      font-size: 13px; font-weight: 600; margin-bottom: 14px; letter-spacing: 0.5px;
+    }
+    .card:nth-child(1) .card-label { color: #E07A59; }
+    .card:nth-child(2) .card-label { color: #6DB897; }
+    .card:nth-child(3) .card-label { color: #5D4E42; }
+    .card-desc {
+      font-size: 15px; color: #5D4E42; line-height: 1.6; margin-bottom: 14px;
+    }
+    .card-tools {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto;
+    }
+    .tool-chip {
+      background: #F7F4EF; border: 1px solid #EAE0D9; border-radius: 14px;
+      padding: 3px 10px; font-size: 12px; color: #5D4E42; font-weight: 500;
+    }
+    .note-bar {
+      margin-top: 20px; padding: 12px 18px;
+      background: rgba(224,122,89,0.06); border-radius: 8px;
+      border-left: 3px solid #E07A59;
+      font-size: 14px; color: #5D4E42; line-height: 1.5;
+      opacity: 0; animation: fadeInContent 0.6s ease-out 0.65s forwards;
+    }
+    .note-bar strong { color: #2B2A27; }
+    .footer {
+      position: absolute; bottom: 30px; left: 70px; right: 70px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 14px; color: #9E9086;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <h1>行业全景：AI Coding 赛道细分</h1>
+    <p class="subtitle">三大赛道，定位和目标用户截然不同</p>
+    <div class="cards-container">
+      <div class="card">
+        <div class="card-icon">&#9881;</div>
+        <div class="card-title">AI-Assisted Coding</div>
+        <div class="card-label">增强器</div>
+        <div class="card-desc">嵌入开发者现有工作流，提升编码效率。以编辑器/IDE 为载体。</div>
+        <div class="card-tools">
+          <span class="tool-chip">Cursor</span>
+          <span class="tool-chip">Copilot</span>
+          <span class="tool-chip">Windsurf</span>
+          <span class="tool-chip">Augment</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#9889;</div>
+        <div class="card-title">End-to-End Agent</div>
+        <div class="card-label">自主执行</div>
+        <div class="card-desc">目标是独立完成开发任务的"初级工程师"，可派活、可自主探索。</div>
+        <div class="card-tools">
+          <span class="tool-chip">Claude Code</span>
+          <span class="tool-chip">Codex CLI</span>
+          <span class="tool-chip">Cline</span>
+          <span class="tool-chip">Devin</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#9998;</div>
+        <div class="card-title">Vertical Vibe Coding</div>
+        <div class="card-label">垂直平台</div>
+        <div class="card-desc">面向特定场景，以自然语言驱动生成。降低技术门槛。</div>
+        <div class="card-tools">
+          <span class="tool-chip">V0</span>
+          <span class="tool-chip">Bolt</span>
+          <span class="tool-chip">Lovable</span>
+        </div>
+      </div>
+    </div>
+    <div class="note-bar">
+      <strong>边界正在模糊：</strong>Cursor 已推出 Background Agent，Claude Code 支持 pair programming，V0 走向全栈平台
+    </div>
+    <div class="footer">
+      <span>行业全景</span>
+      <span>3 / 15</span>
+    </div>
+  </div>
+</body>
+</html>

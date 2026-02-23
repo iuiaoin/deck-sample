@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Copilot & Windsurf</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body {
+      margin: 0; padding: 0; width: 100vw; height: 100vh;
+      display: flex; justify-content: center; align-items: center;
+      background-color: #e0e0e0;
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif;
+    }
+    .slide {
+      width: 1280px; height: 720px;
+      background-color: #F7F4EF;
+      position: relative; overflow: hidden;
+      box-sizing: border-box;
+      display: flex; flex-direction: column;
+      padding: 55px 70px 50px;
+    }
+    @keyframes fadeInContent { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .header-row {
+      display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;
+      animation: fadeInContent 0.6s ease-out;
+    }
+    h1 { color: #2B2A27; font-size: 36px; font-weight: 700; margin: 0; }
+    .section-tag {
+      background: #E07A59; color: #fff; font-size: 12px; font-weight: 600;
+      padding: 4px 14px; border-radius: 12px; letter-spacing: 0.5px; flex-shrink: 0; margin-top: 6px;
+    }
+    .key-point {
+      font-size: 16px; color: #E07A59; font-weight: 600; margin: 0 0 24px;
+      animation: fadeInContent 0.6s ease-out 0.1s forwards; opacity: 0;
+    }
+    .panels {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 28px; flex: 1;
+    }
+    .panel {
+      background: #FFFFFF; border-radius: 12px; padding: 28px 26px;
+      border: 1px solid #EAE0D9;
+      display: flex; flex-direction: column;
+      opacity: 0; animation: fadeInContent 0.6s ease-out forwards;
+    }
+    .panel:nth-child(1) { animation-delay: 0.2s; }
+    .panel:nth-child(2) { animation-delay: 0.35s; }
+    .panel-header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+    }
+    .panel-logo {
+      width: 40px; height: 40px; border-radius: 8px; display: flex;
+      align-items: center; justify-content: center; font-size: 22px;
+      flex-shrink: 0;
+    }
+    .panel:nth-child(1) .panel-logo { background: rgba(36,41,46,0.08); }
+    .panel:nth-child(2) .panel-logo { background: rgba(86,156,214,0.1); }
+    .panel-name { font-size: 22px; font-weight: 700; color: #2B2A27; }
+    .panel-subtitle { font-size: 13px; color: #9E9086; font-weight: 500; }
+    .point-list { list-style: none; padding: 0; margin: 0; }
+    .point-list li {
+      font-size: 14px; color: #5D4E42; line-height: 1.65; margin-bottom: 10px;
+      padding-left: 18px; position: relative;
+    }
+    .point-list li::before {
+      content: ''; position: absolute; left: 0; top: 8px;
+      width: 8px; height: 8px; border-radius: 50%;
+    }
+    .pro li::before { background: #9FD3B8; }
+    .con li::before { background: #D4A373; }
+    .point-list li strong { color: #2B2A27; font-weight: 600; }
+    .status-badge {
+      display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px;
+      border-radius: 4px; margin-left: 6px;
+    }
+    .status-active { background: rgba(159,211,184,0.2); color: #4A8E6D; }
+    .status-uncertain { background: rgba(212,163,115,0.2); color: #8B6D45; }
+    .common-note {
+      margin-top: 16px; padding: 12px 18px;
+      background: rgba(224,122,89,0.06); border-radius: 8px;
+      border-left: 3px solid #E07A59;
+      font-size: 14px; color: #5D4E42; line-height: 1.5;
+      opacity: 0; animation: fadeInContent 0.5s ease-out 0.5s forwards;
+    }
+    .common-note strong { color: #2B2A27; }
+    .footer {
+      position: absolute; bottom: 30px; left: 70px; right: 70px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 14px; color: #9E9086;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <div class="header-row">
+      <h1>GitHub Copilot & Windsurf</h1>
+      <span class="section-tag">AI-ASSISTED</span>
+    </div>
+    <p class="key-point">里程碑式产品逐渐被超越 · 大厂资源与 OpenAI 收购的变数</p>
+    <div class="panels">
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-logo">&#128025;</div>
+          <div>
+            <div class="panel-name">GitHub Copilot <span class="status-badge status-active">追赶中</span></div>
+            <div class="panel-subtitle">VS Code 原生集成</div>
+          </div>
+        </div>
+        <ul class="point-list pro">
+          <li><strong>里程碑意义</strong>——第一个让人感觉"能用"的 AI coding 工具</li>
+          <li>VS Code 最近发力追赶，宣言 "Open Source AI Editor"</li>
+          <li>企业版深度集成 GitHub/Azure DevOps，合规性好</li>
+        </ul>
+        <ul class="point-list con" style="margin-top: 8px;">
+          <li>大厂包袱：层层审批，拿不到足够资源</li>
+          <li>受限 VS Code 壳，不像 fork 的 AI IDE 可以随意改</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-logo">&#127754;</div>
+          <div>
+            <div class="panel-name">Windsurf <span class="status-badge status-uncertain">前途未卜</span></div>
+            <div class="panel-subtitle">被 OpenAI 收购</div>
+          </div>
+        </div>
+        <ul class="point-list pro">
+          <li><strong>上下文管理</strong>——据说对复杂项目更智能</li>
+          <li>积累了 long context 管理能力和用户数据</li>
+        </ul>
+        <ul class="point-list con" style="margin-top: 8px;">
+          <li>Anthropic 已断供，模型选择受限</li>
+          <li>被收购后的整合方向不明，用户数据可能是 OpenAI 看中的核心资产</li>
+          <li>独立产品的未来存疑</li>
+        </ul>
+      </div>
+    </div>
+    <div class="common-note">
+      <strong>共同困境：</strong>在 Agent 时代，AI-assisted coding 的 UX 差异正在被抹平。长远看 VS Code 可能重回巅峰——大厂认真起来很吓人。
+    </div>
+    <div class="footer">
+      <span>工具分析 · Copilot & Windsurf</span>
+      <span>5 / 15</span>
+    </div>
+  </div>
+</body>
+</html>

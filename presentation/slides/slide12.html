@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>场景适配：什么场景用什么工具？</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body {
+      margin: 0; padding: 0; width: 100vw; height: 100vh;
+      display: flex; justify-content: center; align-items: center;
+      background-color: #e0e0e0;
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif;
+    }
+    .slide {
+      width: 1280px; height: 720px;
+      background-color: #F7F4EF;
+      position: relative; overflow: hidden;
+      box-sizing: border-box;
+      display: flex; flex-direction: column;
+      padding: 55px 70px 50px;
+    }
+    @keyframes fadeInContent { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    h1 {
+      color: #2B2A27; font-size: 38px; font-weight: 700; margin: 0 0 6px;
+      animation: fadeInContent 0.6s ease-out;
+    }
+    .key-point {
+      font-size: 16px; color: #E07A59; font-weight: 600; margin: 0 0 28px;
+      animation: fadeInContent 0.6s ease-out 0.1s forwards; opacity: 0;
+    }
+    .scenarios-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; flex: 1;
+    }
+    .scenario-card {
+      background: #FFFFFF; border-radius: 10px; padding: 22px 20px;
+      border: 1px solid #EAE0D9;
+      display: flex; flex-direction: column;
+      opacity: 0; animation: fadeInContent 0.5s ease-out forwards;
+    }
+    .scenario-card:nth-child(1) { animation-delay: 0.15s; }
+    .scenario-card:nth-child(2) { animation-delay: 0.25s; }
+    .scenario-card:nth-child(3) { animation-delay: 0.35s; }
+    .scenario-card:nth-child(4) { animation-delay: 0.45s; }
+    .scenario-card:nth-child(5) { animation-delay: 0.55s; }
+    .scenario-card:nth-child(6) { animation-delay: 0.65s; }
+    .sc-icon {
+      font-size: 26px; margin-bottom: 10px;
+    }
+    .sc-title {
+      font-size: 16px; font-weight: 700; color: #2B2A27; margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .sc-desc {
+      font-size: 12px; color: #9E9086; line-height: 1.5; margin-bottom: 12px;
+    }
+    .sc-tools {
+      margin-top: auto; display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .sc-tool {
+      padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;
+    }
+    .sc-tool.primary {
+      background: #E07A59; color: #FFFFFF;
+    }
+    .sc-tool.secondary {
+      background: rgba(224,122,89,0.08); color: #C4563A; border: 1px solid rgba(224,122,89,0.2);
+    }
+    .tip-bar {
+      margin-top: 18px; padding: 12px 18px;
+      background: rgba(159,211,184,0.1); border-radius: 8px;
+      font-size: 14px; color: #4A3F35; line-height: 1.5;
+      opacity: 0; animation: fadeInContent 0.5s ease-out 0.75s forwards;
+    }
+    .tip-bar strong { color: #2B2A27; }
+    .footer {
+      position: absolute; bottom: 30px; left: 70px; right: 70px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 14px; color: #9E9086;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <h1>场景适配：什么场景用什么工具？</h1>
+    <p class="key-point">关键不是"哪个最强"，而是"哪个最适合你的场景"</p>
+    <div class="scenarios-grid">
+      <div class="scenario-card">
+        <div class="sc-icon">&#128187;</div>
+        <div class="sc-title">日常编码增效</div>
+        <div class="sc-desc">写代码、补全、重构、日常开发任务</div>
+        <div class="sc-tools">
+          <span class="sc-tool primary">Cursor</span>
+          <span class="sc-tool secondary">Copilot</span>
+        </div>
+      </div>
+      <div class="scenario-card">
+        <div class="sc-icon">&#129302;</div>
+        <div class="sc-title">独立完成开发任务</div>
+        <div class="sc-desc">派活给 Agent，让它自主完成功能开发或 bug 修复</div>
+        <div class="sc-tools">
+          <span class="sc-tool primary">Claude Code</span>
+          <span class="sc-tool secondary">Devin</span>
+        </div>
+      </div>
+      <div class="scenario-card">
+        <div class="sc-icon">&#128218;</div>
+        <div class="sc-title">大型代码库理解</div>
+        <div class="sc-desc">Monorepo、60万+ 行代码、跨模块理解</div>
+        <div class="sc-tools">
+          <span class="sc-tool primary">Augment</span>
+          <span class="sc-tool secondary">Cursor Max</span>
+        </div>
+      </div>
+      <div class="scenario-card">
+        <div class="sc-icon">&#127912;</div>
+        <div class="sc-title">前端快速原型</div>
+        <div class="sc-desc">React/Next.js 组件生成、UI 设计到代码</div>
+        <div class="sc-tools">
+          <span class="sc-tool primary">V0</span>
+        </div>
+      </div>
+      <div class="scenario-card">
+        <div class="sc-icon">&#128274;</div>
+        <div class="sc-title">开源 / 数据安全优先</div>
+        <div class="sc-desc">代码不离开本地、自选模型、透明可审计</div>
+        <div class="sc-tools">
+          <span class="sc-tool primary">Cline</span>
+        </div>
+      </div>
+      <div class="scenario-card">
+        <div class="sc-icon">&#128241;</div>
+        <div class="sc-title">探索性 / 低门槛</div>
+        <div class="sc-desc">手机也能派活、ChatGPT 生态、试水 Agent</div>
+        <div class="sc-tools">
+          <span class="sc-tool primary">Codex CLI</span>
+        </div>
+      </div>
+    </div>
+    <div class="tip-bar">
+      <strong>选型四要素：</strong>团队技术栈 &middot; 安全合规要求 &middot; 预算 &middot; 项目复杂度。没有银弹，多试才能找到最适合的。
+    </div>
+    <div class="footer">
+      <span>选型指南</span>
+      <span>12 / 15</span>
+    </div>
+  </div>
+</body>
+</html>
